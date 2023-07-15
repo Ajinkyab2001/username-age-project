@@ -7,9 +7,9 @@ import UsersList from './components/User/UsersList';
 function App() {
   const [userList,setUserList ]= useState([])
     
-  const addUserHandler = (userN,userA) => {
+  const addUserHandler = (userN,userA,userC) => {
     setUserList((prevUser)=>{
-        return [...prevUser,{username:userN , age : userA}]
+        return [...prevUser,{username:userN , age : userA , collegeName : userC}]
     })
   }
 

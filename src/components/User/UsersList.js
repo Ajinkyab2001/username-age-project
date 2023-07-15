@@ -10,7 +10,7 @@ const UsersList = (props) => {
           {props.users.map((element) => {
             return (
               <li key={new Date().getTime()}>
-                {element.username} (is {element.age} years old)
+                {element.username} (is {element.age} years old) & {element.collegeName} is his college
               </li>
             );
           })}

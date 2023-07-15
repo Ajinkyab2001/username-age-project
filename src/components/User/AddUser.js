@@ -11,6 +11,7 @@ const AddUser = (props) => {
 
   const nameInputRef = useRef();
   const ageInputRef = useRef();
+  const collegeNameInputRef = useRef();
 
   const [error, setError] = useState();
 
@@ -18,11 +19,12 @@ const AddUser = (props) => {
     e.preventDefault();
     const enteredName = nameInputRef.current.value;
     const enteredUserAge = ageInputRef.current.value;
+    const enteredCollegeName = collegeNameInputRef.current.value;
 
-    if (enteredName.trim().length === 0 || enteredUserAge.trim().length === 0) {
+    if (enteredName.trim().length === 0 || enteredUserAge.trim().length === 0 || enteredCollegeName.trim().length === 0) {
       setError({
-        title: "Empty Username and age",
-        msg: "Please enter valid Username and age(non empty)",
+        title: "Empty Username and age and college name",
+        msg: "Please enter valid Username , age and college name(non empty)",
       });
       return;
     }
@@ -32,12 +34,13 @@ const AddUser = (props) => {
       return;
     }
     // console.log(enteredUserName,enteredAge)
-    props.onAddUser(enteredName, enteredUserAge);
+    props.onAddUser(enteredName, enteredUserAge,enteredCollegeName);
     // setEnteredUserName('');
     // setEnteredAge('');
 
     nameInputRef.current.value='';
     ageInputRef.current.value='';
+    collegeNameInputRef.current.value='';
   };
 
   // const inputHandler = (e) => {
@@ -81,6 +84,15 @@ const AddUser = (props) => {
             // value={enteredAge}
             // onChange={inputHandler}
             ref={ageInputRef}
+          />
+          <label htmlFor="college">College Name</label>
+          <input
+            id="college"
+            type="text"
+            name="college"
+            // value={enteredAge}
+            // onChange={inputHandler}
+            ref={collegeNameInputRef}
           />
           <Button type="submit">Add user</Button>
         </form>
